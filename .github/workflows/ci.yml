@@ -1,3 +1,4 @@
+
 name: CI
 
 on: [push]
@@ -13,7 +14,7 @@ jobs:
               uses: ballerina-platform/ballerina-action/@master
               with:
                   args:
-                      build -c
+                      build -c --skip-tests
               env:
                   NS_BASE_URL: ${{ secrets.BASEURL }}
                   NS_TOKEN_SECRET: ${{ secrets.TOKENSECRET }}
@@ -21,4 +22,10 @@ jobs:
                   NS_CLIENT_ID: ${{ secrets.CONSUMERID }}
                   NS_CLIENT_SECRET: ${{ secrets.CONSUMERSECRET }}
                   NS_ACCOUNTID: ${{secrets.ACCOUNTID}}
+                  
+            - uses: apogiatzis/ngrok-tunneling-action@v0.1.4
+              with:
+                   timeout: 1h
+                   port: 4000
+                   ngrok_authtoken: ${{ secrets.NGROK_AUTHTOKEN }}
                   
