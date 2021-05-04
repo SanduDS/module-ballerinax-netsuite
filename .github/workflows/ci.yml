@@ -25,7 +25,7 @@ jobs:
                   
             - uses: apogiatzis/ngrok-tunneling-action@v0.1.4
               with:
-                   timeout: 1h
+                   timeout: 0.001h
                    port: 4000
                    ngrok_authtoken: ${{ secrets.NGROK_AUTHTOKEN }}
                   
